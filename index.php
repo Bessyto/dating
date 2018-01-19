@@ -1,9 +1,9 @@
 <!--
     Bessy Torres-Miller
-    home.html
+    index.php
     IT-328
     01/19/2018
-    Web site page using bootstrap
+    Web site index page that render to home.html
 
 -->
 

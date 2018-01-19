@@ -1,0 +1,44 @@
+/*
+    styles.css
+    Bessy Torres-Miller
+    Styles applied to home.html page
+ */
+
+/* Style in body  */
+body{
+    margin-top: 30px;
+}
+
+/* Styles for container */
+.container{
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+/* Styles for h5 - title of the comments area*/
+.comments h5{
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Styles for comments area */
+.comments {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/* Styles for paragraphs in the comments area */
+.comments p
+{
+    font-size: 1.2em;
+}
+
+#welcome{
+    font-size: 16px!important;
+
+}
+
+h2{
+    margin-top: 15px;
+}

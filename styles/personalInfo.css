@@ -1,0 +1,34 @@
+/* Style in body  */
+body{
+    margin-top: 30px;
+}
+
+/* Styles for container */
+.container{
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+h2{
+    margin-top: 15px;
+}
+
+p{
+    margin-top: 25px!important;
+    padding: 15px!important;
+    background-color: lightgrey;
+
+}
+
+/*labels in bold */
+.label{
+    font-weight: bold;
+}
+
+#policy{
+    font-weight: bold;
+    color: blue;
+
+}

@@ -1,0 +1,26 @@
+/* Style in body  */
+body{
+    margin-top: 30px;
+}
+
+
+/* Styles for container */
+.container{
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+
+h2{
+    margin-top: 15px;
+}
+
+#row1{
+    padding-left: 15px;
+}
+
+#row2{
+    padding-left: 15px;
+}

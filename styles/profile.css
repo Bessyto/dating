@@ -1,0 +1,29 @@
+/* Style in body  */
+body{
+    margin-top: 30px;
+}
+
+textarea{
+    padding-left: 10px!important;
+    padding-right: 30px!important;
+
+
+}
+
+/* Styles for container */
+.container{
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+
+h2{
+    margin-top: 15px;
+}
+
+/*labels in bold */
+.label{
+    font-weight: bold;
+}

@@ -8,39 +8,88 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
     <!--Link to local css style-->
-    <link rel= "stylesheet" href="../styles/summary.css">
+    <link rel= "stylesheet" href="styles/summary.css">
 </head>
+
+<header>
+    <!-- NAvigation bar -->
+    <nav class="navbar navbar-light bg-faded bg-info text-white">
+        <a class="navbar-brand" href="./">
+            <h5>My Dating Website</h5>
+        </a>
+    </nav>
+</header>
+
 <body>
     <div class="container border border-success">
-        <form action="#" method="get" class="form-group">
+        <fieldset action="#" method="post" class="form-group">
 
             <!-- first row -->
-            <div class="form-group row mb-0">
+            <div class="form-group row">
 
                 <!--first column-->
-                <div class="form-group small col-md-6" id="row1">
+                <div class=" small col-md-6" id="row1">
                     <ul class="list-group">
-                        <li class="list-group-item">Name: </li>
-                        <li class="list-group-item">Gender: </li>
-                        <li class="list-group-item">Age: </li>
-                        <li class="list-group-item">Phone: </li>
-                        <li class="list-group-item">Email: </li>
-                        <li class="list-group-item">State: </li>
-                        <li class="list-group-item">Seeking: </li>
-                        <li class="list-group-item">Interests: </li>
+                        <li class="list-group-item">Name: {{@firstName}} {{@lastName}}</li>
+                        <li class="list-group-item">Gender: {{@genre}}
+                            <repeat group=" {{@genres}}" value="{{ @genreOption}}">
+                                <option>
+                                    <check if="{{@genreOption == @genres}}">selected</check>
+                                    {{@genreOption}}
+                                </option>
+                            </repeat>
+                        </li>
+                        <li class="list-group-item">Age: {{@age}}</li>
+                        <li class="list-group-item">Phone: {{@phone}}</li>
+                        <li class="list-group-item">Email: {{@email}}</li>
+                        <li class="list-group-item">State: {{@state}}
+                            <!-- TODO: Check if this is working -->
+                            <!--<repeat group=" {{@states}}" value="{{ @stateOption}}">
+                                <option>
+                                    <check if="{{@stateOption == @states}}">selected</check>
+                                    {{@stateO}}
+                                </option>
+                            </repeat>-->
+                        </li>
+
+                        <!-- TODO: Check if this is right -->
+                        <li class="list-group-item">Seeking: {{@seeking}}
+                                <!--<repeat group=" {{@seekings}}" value="{{ @seekingOption}}">-->
+                                    <!--<option>-->
+                                        <!--<check if="{{@seekingOption == @seekings}}">selected</check>-->
+                                        <!--{{@seeking}}-->
+                                    <!--</option>-->
+                                <!--</repeat>-->
+
+                        </li>
+
+                        <li class="list-group-item">Interests: {{@indoor}} {{@outdoor}}
+                            <repeat group=" {{@indoors}}" value="{{ @indoorOption}}">
+                                <option>
+                                    <check if="{{@indoorOption == @indoors}}">selected</check>
+                                    {{@indoorOption}}
+                                </option>
+                            </repeat>
+                            <repeat group=" {{@outdoors}}" value="{{ @outdoorOption}}">
+                                <option>
+                                    <check if="{{@outdoorOption == @outdoors}}">selected</check>
+                                    {{@outdoorOption}}
+                                </option>
+                            </repeat>
+                        </li>
+
                     </ul>
                 </div> <!--1 column-->
 
                <!--2 column -->
-                <div class="form-group col-md-5">
-                    <img class="img-fluid rounded mx-auto" src="../images/iconUser.jpg" alt="user photo"> <br>
+                <div class="group-form center col-md-5">
+                    <img class="img-fluid rounded mx-auto" src="images/iconUser.jpg" alt="user photo"> <br>
 
-                    <label>Biography</label>
-                    <p class="border border-info text-center">
-                        sjfnsjnfsjfnsjnfsjfn
-                        sfsfsfsfsf
-                        sfsfsfsfsf
-                    </p>
+                    <h5>Biography</h5>
+                    <div class="card">
+                        <div class="card-block">{{@biography}}</div>
+                    </div>
+
                 </div>
 
             </div>
@@ -55,7 +104,7 @@
                 </div>
             </div> <!--2 row -->
 
-        </form>
+        </fieldset>
     </div>
 
 

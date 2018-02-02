@@ -4,7 +4,35 @@ body{
 }
 
 #row1{
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left: 20px;
+}
+
+/* Styles for container */
+.container{
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+
+p{
+    margin-top: 25px!important;
+    padding: 15px!important;
+
+}
+
+ul{
+    padding-left: 0px!important;
+}
+
+fieldset{
+    margin-bottom: 0px;
+}
+
+.card-block{
+    padding: 5px;
+    text-align: justify;
 }
 

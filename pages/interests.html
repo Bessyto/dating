@@ -9,63 +9,76 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
     <!--Link to local css style-->
-    <link rel= "stylesheet" href="../styles/interests.css">
+    <link rel= "stylesheet" href="styles/interests.css">
 </head>
+
+<header>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-light bg-faded bg-info text-white">
+        <a class="navbar-brand" href="./">
+            <h5>My Dating Website</h5>
+        </a>
+    </nav>
+</header>
 <body>
     <div class="container border border-success">
-        <form action="#" method="get" class="form-group">
+        <form action="./summary" method="post" class="form-group">
             <h2 class="text-left">Interests</h2><hr>
 
             <h6 class="text-left">In-door Interests</h6><br>
 
             <!-- first row -->
             <div class="form-group row mb-0" id="row1">
+                <div>
+                    <check if="{{(@errors['indoor']) }}">
+                        <p>{{ @errors['indoor'] }}</p>
+                    </check>
+                </div>
 
                 <!--1 column -->
                 <div class="form-group small col-md-3">
                     <div class="form-group">
-                        <label>
-                            <input type="checkbox" name="interests[]" value="tv">  tv
-                        </label><br>
-                        <label>
-                            <input type="checkbox" name="interests[]" value="puzzles">  puzzles
-                        </label>
+
+                        <input id="tv-input" type="checkbox" name="indoors[]" value="{{ @indoors['tv'] }}">
+                        <label for="tv-input" >{{ @indoors['tv'] }}</label><br />
+
+                        <input id="puzzles-input" type="checkbox" name="indoors[]" value="{{ @indoors['puzzles'] }}">
+                        <label for="puzzles-input"> {{ @indoors['puzzles'] }}</label>
+
                     </div>
                 </div> <!--1 column -->
 
                 <!--2 column-->
                 <div class="form-group small col-md-3">
                     <div class="form-group">
-                        <label>
-                            <input type="checkbox" name="interests[]" value="movies">  movies
-                        </label><br>
-                        <label>
-                            <input type="checkbox" name="interests[]" value="reading">  reading
-                        </label>
+
+                        <input id="movies-input" type="checkbox" name="indoors[]" value="{{ @indoors['movies'] }}">
+                        <label for="movies-input">{{ @indoors['movies'] }}</label><br>
+
+                        <input id="reading-input" type="checkbox" name="indoors[]" value="{{ @indoors['reading'] }}">
+                        <label for="reading-input">{{ @indoors['reading'] }}</label>
                     </div>
                 </div> <!--2 column -->
 
                 <!--3 column-->
                 <div class="form-group small col-md-3">
                     <div class="form-group">
-                        <label>
-                            <input type="checkbox" name="interests[]" value="cooking">  cooking
-                        </label><br>
-                        <label>
-                            <input type="checkbox" name="interests[]" value="playing cards">  playing cards
-                        </label>
+                        <input id="cooking-input" type="checkbox" name="indoors[]" value="{{ @indoors['cooking'] }}">
+                        <label for="cooking-input">{{ @indoors['cooking'] }}</label><br>
+
+                        <input id="cards-input" type="checkbox" name="indoors[]" value="{{ @indoors['playing cards'] }}">
+                        <label for="cards-input">{{ @indoors['playing cards'] }}</label>
                     </div>
                 </div> <!--3 column -->
 
                 <!--4 column-->
                 <div class="form-group small col-md-3">
                     <div class="form-group">
-                        <label>
-                            <input type="checkbox" name="interests[]" value="board games">  board games
-                        </label><br>
-                        <label>
-                            <input type="checkbox" name="interests[]" value="video games">  playing cards
-                        </label>
+                        <input id="games-input" type="checkbox" name="indoors[]" value="{{ @indoors['board games'] }}">
+                        <label for="games-input">{{ @indoors['board games'] }} </label><br>
+
+                        <input id="video-input" type="checkbox" name="indoors[]" value="{{ @indoors['video games'] }}">
+                        <label for="video-input">{{ @indoors['video games'] }}</label>
                     </div>
                 </div> <!--4 column -->
             </div>  <!--first row -->
@@ -75,45 +88,52 @@
             <!-- second row -->
             <div class="form-group row mb-0 " id="row2">
 
+                <div>
+                    <check if="{{isset (@errors['outdoor']) }}">
+                        <p>{{ @errors['outdoor'] }}</p>
+                    </check>
+                </div>
+
                 <!--1 column -->
                 <div class="form-group small col-md-3">
                     <div class="form-group">
-                        <label>
-                            <input type="checkbox" name="interests[]" value="hiking">  hiking
-                        </label><br>
-                        <label>
-                            <input type="checkbox" name="interests[]" value="walking">  walking
-                        </label>
+
+                        <input id="hiking-input" type="checkbox" name="outdoors[]" value="{{ @outdoors['hiking'] }}">
+                        <label for="hiking-input">{{ @outdoors['hiking'] }}</label><br>
+
+                        <input id="walking-input" type="checkbox" name="outdoors[]" value="{{ @outdoors['walking'] }}">
+                        <label for="walking-input">{{ @outdoors['walking'] }}</label>
                     </div>
                 </div> <!--1 column -->
 
                 <!--2 column -->
                 <div class="form-group small col-md-3">
                     <div class="form-group">
-                        <label>
-                            <input type="checkbox" name="interests[]" value="biking">  biking
-                        </label><br>
-                        <label>
-                            <input type="checkbox" name="interests[]" value="climbing">  climbing
-                        </label>
+
+                        <input id="biking-input" type="checkbox" name="outdoors[]" value="{{ @outdoors['biking'] }}">
+                        <label for="biking-input">{{ @outdoors['biking'] }}</label><br>
+
+                        <input id="climbing-input" type="checkbox" name="outdoors[]" value="{{ @outdoors['climbing'] }}">
+                        <label for="climbing-input">{{ @outdoors['climbing'] }}</label>
+
                     </div>
                 </div> <!--2 column -->
 
                 <!--3 column -->
                 <div class="form-group small col-md-3">
                     <div class="form-group">
-                        <label>
-                            <input type="checkbox" name="interests[]" value="swimming">  swimming
-                        </label><br>
+
+                        <input id="swimming-input"type="checkbox" name="outdoors[]" value="{{ @outdoors['swimming'] }}">
+                        <label for="swimming-input">{{ @outdoors['swimming'] }}</label><br>
                     </div>
                 </div> <!--3 column -->
 
                 <!--4 column -->
                 <div class="form-group small col-md-3">
                     <div class="form-group">
-                        <label>
-                            <input type="checkbox" name="interests[]" value="collecting">  collecting
-                        </label><br>
+
+                        <input id="collecting-input" type="checkbox" name="outdoors[]" value="{{ @outdoors['collecting'] }}">
+                        <label for="collecting-input">{{ @outdoors['collecting'] }}</label><br>
                     </div>
                 </div> <!--4 column -->
 
@@ -123,7 +143,7 @@
             <div class="form-group row">
                 <div class="form-group small col-md-12 mb-0">
                     <div class="float-right">
-                        <button type="button" class="btn btn-primary">Next > </button>
+                        <button type="submit" name="submit" class="btn btn-primary">Next > </button>
                     </div>
                 </div>
             </div> <!--3 row -->

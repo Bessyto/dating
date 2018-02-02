@@ -8,13 +8,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
     <!--Link to local css style-->
-    <link rel= "stylesheet" href="../styles/personalInfo.css">
+    <link rel= "stylesheet" href="styles/personalInfo.css">
 </head>
+
+<header>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-light bg-faded bg-info text-white">
+        <a class="navbar-brand" href="./">
+            <h5>My Dating Website</h5>
+        </a>
+    </nav>
+</header>
 
 <body>
 <div class="container border border-success">
 
-    <form action="#" method="get" class="form-group">
+    <form action="#" method="post" class="form-group">
         <h2 class="text-left">Personal Information</h2><hr>
         <div class="form-group row mb-0">
 
@@ -23,31 +32,70 @@
                 <!--<div class="text-center-justify">-->
 
                     <div class="form-group">
+                        <div>
+                            <check if="{{ @errors['firstName'] }}">
+                                <p>{{ @errors['firstName'] }}</p>
+                            </check>
+                        </div>
+
+
                         <label for="firstName" class="label">First Name</label>
                         <div class="input-group">
-                            <input class="form-control input-lg" id="firstName" type="text" value="">
+                            <input class="form-control input-lg" id="firstName" type="text" value="{{@firstName}}" name="firstName">
+
                         </div>
                     </div>
 
+
                     <div class="form-group">
+                        <div>
+                            <check if="{{ @errors['lastName'] }}">
+                                <p>{{ @errors['lastName'] }}</p>
+                            </check>
+                        </div>
+
                         <label for='lastName' class="label">Last Name</label>
-                        <input class='form-control input-lg' id="lastName" type='text' value=" ">
+                        <input class='form-control input-lg' id="lastName" type='text' value="{{@lastName}}" name="lastName">
                     </div>
 
                     <div class="form-group">
+                        <div>
+                            <check if="{{ @errors['age']}}">
+                                <p>{{ (@errors['age']) }}</p>
+                            </check>
+                        </div>
+
                         <label for="age" class="label">Age</label>
-                        <input class='form-control input-lg' id="age" type='text' value=" ">
+                        <input class='form-control input-lg' id="age" type='text' value="{{@age}}" name="age">
                     </div>
 
                     <div class="form-group">
-                        <label class='form-control-label label'>Gender</label><br>
-                            <input type="radio" name="gender" value="male">Male &nbsp;
-                            <input type="radio" name="gender" value="female">Female
+                        <div>
+                            <check if="{{ @errors['genre'] }}">
+                                <p>{{ @errors['genre'] }}</p>
+                            </check>
+                        </div>
+
+                        <label class='form-control-label label' name="genres" id="genres">Gender<br>
+                            <repeat group="{{ @genres}}" value="{{ @genreOption}}">  <!--for each gender inside array-->
+
+                                <input type="radio" name="genre" value="{{@genreOption}}">{{@genreOption}}
+                                </input>
+
+                            </repeat>
+                        </label>
+
                     </div>
 
                     <div class="form-group">
+                        <div>
+                            <check if="{{ @errors['phone'] }}">
+                                <p>{{ @errors['phone'] }}</p>
+                            </check>
+                        </div>
+
                         <label class='form-control-label label'>Phone Number</label>
-                        <input class='form-control' type='text' name='phone' value=" ">
+                        <input class='form-control' type='text' name='phone' value="{{@phone}}">
                     </div>
 
                 <!--</div> &lt;!&ndash;First paragraph&ndash;&gt;-->
@@ -68,7 +116,7 @@
         <div class="form-group row">
             <div class="form-group small col-md-12 mb-0">
                 <div class="float-right">
-                    <button type="button" class="btn btn-primary">Next > </button>
+                    <button type="submit" name="submit" class="btn btn-primary" value="NEXT >">NEXT > </button>
                 </div>
             </div>
         </div>

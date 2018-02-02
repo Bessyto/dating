@@ -27,3 +27,7 @@ h2{
 .label{
     font-weight: bold;
 }
+
+p{
+    background-color: lightgrey;
+}

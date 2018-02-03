@@ -1,3 +1,10 @@
+<!--
+Bessy Torres-Miller
+02/02/2018
+
+The Summary page, shows a summary of the user information.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +18,17 @@
     <link rel= "stylesheet" href="styles/summary.css">
 </head>
 
-<header>
-    <!-- NAvigation bar -->
-    <nav class="navbar navbar-light bg-faded bg-info text-white">
-        <a class="navbar-brand" href="./">
-            <h5>My Dating Website</h5>
-        </a>
-    </nav>
-</header>
-
 <body>
+
+    <header>
+        <!-- NAvigation bar -->
+        <nav class="navbar navbar-light bg-faded bg-info text-white">
+            <a class="navbar-brand" href="./">
+                <h5>My Dating Website</h5>
+            </a>
+        </nav>
+    </header>
+
     <div class="container border border-success">
         <fieldset action="#" method="post" class="form-group">
 
@@ -42,37 +50,21 @@
                         <li class="list-group-item">Age: {{@age}}</li>
                         <li class="list-group-item">Phone: {{@phone}}</li>
                         <li class="list-group-item">Email: {{@email}}</li>
-                        <li class="list-group-item">State: {{@state}}
-                            <!-- TODO: Check if this is working -->
-                            <!--<repeat group=" {{@states}}" value="{{ @stateOption}}">
+                        <li class="list-group-item">State: {{@state}}</li>
+                        <li class="list-group-item">Seeking: {{@seeking}}</li>
+
+                        <li class="list-group-item">Interests:
+
+                            <repeat group=" {{@indoor}}" value="{{ @indoorOption}}">
                                 <option>
-                                    <check if="{{@stateOption == @states}}">selected</check>
-                                    {{@stateO}}
-                                </option>
-                            </repeat>-->
-                        </li>
-
-                        <!-- TODO: Check if this is right -->
-                        <li class="list-group-item">Seeking: {{@seeking}}
-                                <!--<repeat group=" {{@seekings}}" value="{{ @seekingOption}}">-->
-                                    <!--<option>-->
-                                        <!--<check if="{{@seekingOption == @seekings}}">selected</check>-->
-                                        <!--{{@seeking}}-->
-                                    <!--</option>-->
-                                <!--</repeat>-->
-
-                        </li>
-
-                        <li class="list-group-item">Interests: {{@indoor}} {{@outdoor}}
-                            <repeat group=" {{@indoors}}" value="{{ @indoorOption}}">
-                                <option>
-                                    <check if="{{@indoorOption == @indoors}}">selected</check>
+                                    <check if="{{@indoorOption == @indoor}}">selected</check>
                                     {{@indoorOption}}
                                 </option>
                             </repeat>
-                            <repeat group=" {{@outdoors}}" value="{{ @outdoorOption}}">
+
+                            <repeat group=" {{@outdoor}}" value="{{ @outdoorOption}}">
                                 <option>
-                                    <check if="{{@outdoorOption == @outdoors}}">selected</check>
+                                    <check if="{{@outdoorOption == @outdoor}}">selected</check>
                                     {{@outdoorOption}}
                                 </option>
                             </repeat>
@@ -92,7 +84,7 @@
 
                 </div>
 
-            </div>
+            </div>  <!--first row -->
 
             <!--2 row -->
             <div class="form-group row">
@@ -106,7 +98,6 @@
 
         </fieldset>
     </div>
-
 
     <!-- bootstrap jquery/popper/javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -1,3 +1,11 @@
+<!--
+Bessy Torres-Miller
+02/02/2018
+
+The Profile page, prompt the user for the email, State, seeking and biography information. It shows error message
+when an enter is not valid, and will post to itself until no error messages are posted.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,15 +19,17 @@
     <link rel= "stylesheet" href="styles/profile.css">
 </head>
 
-<header>
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-light bg-faded bg-info text-white">
-        <a class="navbar-brand" href="./">
-            <h5>My Dating Website</h5>
-        </a>
-    </nav>
-</header>
+
 <body>
+    <header>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-light bg-faded bg-info text-white">
+            <a class="navbar-brand" href="./">
+                <h5>My Dating Website</h5>
+            </a>
+        </nav>
+    </header>
+
     <div class="container border border-success">
         <form action="#" method="post" class="form-group">
             <h2 class="text-left">Profile</h2><hr>
@@ -29,11 +39,10 @@
                 <div class="form-group small col-md-6">
 
                     <div class="form-group">
-                        <div>
+
                             <check if="{{ @errors['email'] }}">
-                                <p>{{ @errors['email'] }}</p>
+                                <p class="text-danger">{{ @errors['email'] }}</p>
                             </check>
-                        </div>
 
                         <label for="email" class="label">Email</label>
                         <div class="input-group">
@@ -44,35 +53,23 @@
                     <div class="form-group">
                         <label for="state" class="label">State</label>
                         <select name="state" id="state" class="form-control input-lg">
-                            <!--<option>Select a State</option>-->
                             <repeat group="{{ @states}}" value="{{ @state}}">
                                 <option value="{{@state}}">{{@state}}</option>
-                                <!--<option>-->
-                                    <!--<check if="{{@stateOption == @state}}">selected</check>-->
-                                    <!--{{@stateOption}}-->
-                                <!--</option>-->
                             </repeat>
                         </select>
-
                     </div>  <!--form group states -->
 
-                    <!-- TODO: Check if this is right -->
+
                     <div class="form-group">
 
-                        <div>
                             <check if="{{ @errors['seeking'] }}">
-                                <p>{{ @errors['seeking'] }}</p>
+                                <p class="text-danger">{{ @errors['seeking'] }}</p>
                             </check>
-                        </div>
 
-
-                        <label class='form-control-label label' name="seekings" id="seekings">Seeking<br>
-
+                        <label class='form-control-label label' id="seekings">Seeking</label><br>
                             <repeat group="{{ @seekings }}" value="{{ @seekingOption }}">
-                                <input type="radio" name="seeking" value="{{@seekingOption}}">{{@seekingOption}}</input>
+                                <input type="radio" name="seeking" value="{{@seekingOption}}">{{@seekingOption}}
                             </repeat>
-                        </label>
-
                     </div>
 
                 </div>  <!-- first column -->
@@ -81,20 +78,16 @@
                 <div class="form-group small col-md-6">
                     <div class="form-group">
 
-                        <div>
                             <check if="{{ @errors['biography'] }}">
-                                <p>{{ @errors['biography'] }}</p>
+                                <p class="text-danger">{{ @errors['biography'] }}</p>
                             </check>
-                        </div>
 
                         <label for="biography" class="label">Biography</label>
                         <div class="input-group">
-                            <textarea rows="5" cols="100" id="biography" name="biography" value="{{@biography}}">{{@biography}}</textarea>
+                            <textarea rows="5" cols="100" id="biography" name="biography" >{{@biography}}</textarea>
                         </div>
                     </div>
                 </div>
-
-
 
             </div>  <!-- row -->
 
@@ -108,8 +101,7 @@
             </div>
 
         </form>
-    </div>
-
+    </div>  <!-- container -->
 
     <!-- bootstrap jquery/popper/javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

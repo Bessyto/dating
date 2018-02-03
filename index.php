@@ -21,7 +21,7 @@ require_once('vendor/autoload.php');
 $f3 = Base::instance();
 
 //Define a default route-----------------------------------------------------------------------------------------------
-$f3->route('GET /', function()
+$f3->route('GET /', function($f3)
 {
     $view = new View;
     echo $view->render('pages/home.html');
@@ -57,8 +57,7 @@ $f3->route('GET|POST /personalInfo', function($f3) {
         $f3->set('genre', $genre);
 
         //If success (no errors)
-        if($success)
-        {
+        if($success) {
             //pass the variables to the session
             $_SESSION['firstName'] = $firstName;
             $_SESSION['lastName'] = $lastName;

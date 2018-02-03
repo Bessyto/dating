@@ -1,3 +1,9 @@
+/*
+Bessy Torres-Miller
+02/02/2018
+
+Styles for Profile page
+*/
 /* Style in body  */
 body{
     margin-top: 30px;
@@ -6,7 +12,7 @@ body{
 textarea{
     padding-left: 10px!important;
     padding-right: 30px!important;
-
+    border-radius: 5px;
 
 }
 
@@ -28,6 +34,3 @@ h2{
     font-weight: bold;
 }
 
-p{
-    background-color: lightgrey;
-}

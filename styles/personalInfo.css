@@ -1,3 +1,10 @@
+/*
+Bessy Torres-Miller
+02/02/2018
+
+Styles for Personal Info page
+*/
+
 /* Style in body  */
 body{
     margin-top: 30px;
@@ -15,11 +22,16 @@ h2{
     margin-top: 15px;
 }
 
+/*Styles for paragraph with information */
 p{
     margin-top: 25px!important;
     padding: 15px!important;
-    background-color: lightgrey;
+    border-radius: 10px;
 
+}
+
+#info{
+    background-color: lightgrey;
 }
 
 /*labels in bold */
@@ -27,6 +39,7 @@ p{
     font-weight: bold;
 }
 
+/* Styles for the policy in the info box */
 #policy{
     font-weight: bold;
     color: blue;

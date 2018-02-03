@@ -140,21 +140,24 @@ $f3->route('GET|POST /interests', function($f3) {
 
     if(isset($_POST['submit']))
     {
-        $indoor = $_POST['indoor'];
-        $outdoor = $_POST['outdoor'];
+        $indoor = $_POST['indoors'];
+        $outdoor = $_POST['outdoors'];
+        $errors = $_POST['errors'];
+        $success = $_POST['success'];
 
         include('model/interestsFunction.php');
 
-        $f3->set('errors', $errors);     //because I need to post error messages in the template
-        $f3->set('success', $success);
         $f3->set('indoor', $indoor);
         $f3->set('outdoor', $outdoor);
+        $f3->set('errors', $errors);     //because I need to post error messages in the template
+        $f3->set('success', $success);
+
 
         //If success (no errors)
         if ($success) {
             //pass the variables to the session
-            $_SESSION['indoor'] = $indoor;
-            $_SESSION['outdoor'] = $outdoor;
+            $_SESSION['indoor'] = $f3->get('indoor');
+            $_SESSION['outdoor'] = $f3->get('outdoor');
 
             //send to the next page
             $f3->reroute(' ./summary');
@@ -182,14 +185,16 @@ $f3->route('GET|POST /summary', function($f3) {
         $f3->set('email', $_SESSION['email']);
         $f3->set('state', $_SESSION['state']);
         $f3->set('seeking', $_SESSION['seeking']);
-        $f3->set('biography', $_SESSION['biography']);
+        $f3->set('biography',$_SESSION['biography']);
         $f3->set('indoor', $_SESSION['indoor']);
         $f3->set('outdoor', $_SESSION['outdoor']);
 
 
-    session_destroy();
+
     $view = new Template();
     echo $view -> render('pages/summary.html');
+
+    session_destroy();
 }
 );
 

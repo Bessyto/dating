@@ -11,24 +11,57 @@ $errors = array();
 function validIndoor($indoor)
 {
     global $f3;
-    return in_array($indoor, $f3->get('indoors'));
+
+    if(isset($indoor))
+    {
+        foreach ($indoor as $indoorInt)
+        {
+            if(!in_array($indoorInt, $f3->get('indoors')))
+            {
+                return false;
+            }
+
+        }
+
+
+        return true;
+    }
+
+
+    return false;
+
 }
 
 function validOutdoor($outdoor)
 {
     global $f3;
-    return in_array($outdoor, $f3->get('outdoors'));
+
+    if(isset($outdoor))
+    {
+        foreach ($outdoor as $outdoorInt)
+        {
+            if(!in_array($outdoorInt, $f3->get('outdoors')))
+            {
+                return false;
+            }
+
+        }
+        return true;
+    }
+
+    return false;
+
 }
 
 //Call the functions
-if (!validString($indoor))
+if (!validIndoor($indoor))
 {
-    $errors['indoor'] = "Invalid option";
+    $errors['indoor'] = "Choose an option";
 }
 
-if (!validString($outdoor))
+if (!validOutdoor($outdoor))
 {
-    $errors['outdoor'] = "Invalid option";
+    $errors['outdoor'] = "Choose an option";
 }
 
 // Initialize a $success variable, true if $errors array is true, false otherwise

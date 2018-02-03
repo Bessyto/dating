@@ -12,28 +12,30 @@
     <link rel= "stylesheet" href="styles/interests.css">
 </head>
 
-<header>
-    <!-- navigation bar -->
-    <nav class="navbar navbar-light bg-faded bg-info text-white">
-        <a class="navbar-brand" href="./">
-            <h5>My Dating Website</h5>
-        </a>
-    </nav>
-</header>
 <body>
+
+    <header>
+        <!-- navigation bar -->
+        <nav class="navbar navbar-light bg-faded bg-info text-white">
+            <a class="navbar-brand" href="./">
+                <h5>My Dating Website</h5>
+            </a>
+        </nav>
+    </header>
+
     <div class="container border border-success">
-        <form action="./summary" method="post" class="form-group">
+        <form action="#" method="post" class="form-group">
             <h2 class="text-left">Interests</h2><hr>
 
             <h6 class="text-left">In-door Interests</h6><br>
 
+            <check if="{{isset (@errors['indoor']) }}">
+                <p class="text-danger">{{ @errors['indoor'] }}</p>
+            </check>
+
             <!-- first row -->
             <div class="form-group row mb-0" id="row1">
-                <div>
-                    <check if="{{(@errors['indoor']) }}">
-                        <p>{{ @errors['indoor'] }}</p>
-                    </check>
-                </div>
+
 
                 <!--1 column -->
                 <div class="form-group small col-md-3">
@@ -85,14 +87,12 @@
 
             <h6 class="text-left">Out-door Interests</h6><br>
 
+            <check if="{{isset (@errors['outdoor']) }}">
+                <p class="text-danger">{{ @errors['outdoor'] }}</p>
+            </check>
+
             <!-- second row -->
             <div class="form-group row mb-0 " id="row2">
-
-                <div>
-                    <check if="{{isset (@errors['outdoor']) }}">
-                        <p>{{ @errors['outdoor'] }}</p>
-                    </check>
-                </div>
 
                 <!--1 column -->
                 <div class="form-group small col-md-3">
@@ -123,7 +123,7 @@
                 <div class="form-group small col-md-3">
                     <div class="form-group">
 
-                        <input id="swimming-input"type="checkbox" name="outdoors[]" value="{{ @outdoors['swimming'] }}">
+                        <input id="swimming-input" type="checkbox" name="outdoors[]" value="{{ @outdoors['swimming'] }}">
                         <label for="swimming-input">{{ @outdoors['swimming'] }}</label><br>
                     </div>
                 </div> <!--3 column -->

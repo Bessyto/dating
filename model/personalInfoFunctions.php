@@ -4,10 +4,13 @@
  * User: Bessy Torres-Miller
  * Date: 1/30/2018
  * Time: 10:47 PM
+ * Functions used to validate the fields entered by the user in the personal information page
+ *
  */
 
 $errors = array();
 
+//Check if the age is numerical and grater or equal to 18
 function validAge($age)
 {
     if(is_numeric($age) && ($age >=18))
@@ -18,6 +21,7 @@ function validAge($age)
     return false;
 }
 
+//Check for an empty name or an alphabetical name. The special characters apostrophe and hyphen character are allowed
 function validString($name)
 {
     if(!empty($name) && preg_match("/^[a-zA-Z'-]+$/",$name))
@@ -28,8 +32,8 @@ function validString($name)
     return false;
 }
 
-
-
+//check for the phone number. This need to be numeric and with 10 digits. If the user enter hyphens, these are removed
+//in order to do the check
 function validPhone($phone)
 {
     $phone1=str_replace("-","",$phone);
@@ -40,13 +44,14 @@ function validPhone($phone)
    return false;
 }
 
+//valid the gender is in the array
 function validGender($genre)
 {
     global $f3;
     return in_array($genre, $f3->get('genres'));
 }
 
-//Invoke functions
+//Invoke functions passing the variables to check
 if (!validString($firstName))
 {
     $errors['firstName'] = "Please enter a valid first name";
@@ -76,4 +81,3 @@ if (!validGender($genre))
 // Initialize a $success variable, true if $errors array is true, false otherwise
 $success = sizeof($errors) == 0;
 
-//print_r($errors);

@@ -45,7 +45,7 @@ $f3->route('GET|POST /personalInfo', function($f3) {
         $genre = $_POST['genre'];
 
         //call the function
-        include ('model/functions.php');
+        include('model/personalInfoFunctions.php');
 
         //past the value of the variables to the hive
         $f3->set('errors', $errors);     //because I need to post error messages in the template(needed in the hive)

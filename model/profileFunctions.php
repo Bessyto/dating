@@ -1,20 +1,23 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: PCC
+ * User: Bessy Torres-Miller
  * Date: 2/1/2018
  * Time: 9:24 PM
+ *
+ * Functions used to validate some fields entered by the user in the profile form
  */
 
 $errors = array();
 
-
+//Check for the seeking is in the array
 function validSeeking($seeking)
 {
     global $f3;
     return in_array($seeking, $f3->get('seekings'));
 }
 
+//Check for empty biography
 function validBiography($biography)
 {
     if(empty($biography))
@@ -22,9 +25,9 @@ function validBiography($biography)
         return false;
     }
     return true;
-
 }
 
+//Check for a valid email
 function validEmail($email)
 {
     if (filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -33,7 +36,6 @@ function validEmail($email)
     }
     return false;
 }
-
 
 //calling the functions
 if(!validSeeking($seeking))

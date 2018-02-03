@@ -1,9 +1,10 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: PCC
+ * User: Bessy Torres-Miller
  * Date: 2/1/2018
  * Time: 11:53 PM
+ * Functions used to validate Indoor and outdoor activities
  */
 
 $errors = array();
@@ -22,14 +23,9 @@ function validIndoor($indoor)
             }
 
         }
-
-
         return true;
     }
-
-
     return false;
-
 }
 
 function validOutdoor($outdoor)
@@ -50,7 +46,6 @@ function validOutdoor($outdoor)
     }
 
     return false;
-
 }
 
 //Call the functions

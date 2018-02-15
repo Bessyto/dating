@@ -38,31 +38,36 @@ The Summary page, shows a summary of the user information.
                 <!--first column-->
                 <div class=" small col-md-6" id="row1">
                     <ul class="list-group">
-                        <li class="list-group-item">Name: {{@firstName}} {{@lastName}}</li>
-                        <li class="list-group-item">Gender: {{@genre}}
+                        <li class="list-group-item">Name: {{@member->getFname()}} {{@member->getLname()}}</li>
+                        <li class="list-group-item">Gender: {{@member->getGender()}}
                             <repeat group=" {{@genres}}" value="{{ @genreOption}}">
                                     <check if="{{@genreOption == @genres}}">selected</check>
                                     {{@genreOption}}
                             </repeat>
                         </li>
-                        <li class="list-group-item">Age: {{@age}}</li>
-                        <li class="list-group-item">Phone: {{@phone}}</li>
-                        <li class="list-group-item">Email: {{@email}}</li>
-                        <li class="list-group-item">State: {{@state}}</li>
-                        <li class="list-group-item">Seeking: {{@seeking}}</li>
+                        <li class="list-group-item">Age: {{@member->getAge()}}</li>
+                        <li class="list-group-item">Phone: {{@member->getPhone()}}</li>
+                        <li class="list-group-item">Email: {{@member->getEmail()}}</li>
+                        <li class="list-group-item">State: {{@member->getState()}}</li>
+                        <li class="list-group-item">Seeking: {{@member->getSeeking()}}</li>
 
-                        <li class="list-group-item">Interests:
 
-                            <repeat group=" {{@indoor}}" value="{{ @indoorOption}}">
+
+                        <check if="{{ @member instanceof PremiumMember }}">
+
+                            <li class="list-group-item">Interests:
+
+                                <repeat group=" {{@member->getInDoorInterests()}}" value="{{ @indoorOption}}">
                                     <check if="{{@indoorOption == @indoor}}">selected</check>
                                     {{@indoorOption}}
-                            </repeat>
+                                </repeat>
 
-                            <repeat group=" {{@outdoor}}" value="{{ @outdoorOption}}">
+                                <repeat group=" {{@member->getOutDoorInterests()}}" value="{{ @outdoorOption}}">
                                     <check if="{{@outdoorOption == @outdoor}}">selected</check>
                                     {{@outdoorOption}}
-                            </repeat>
-                        </li>
+                                </repeat>
+                            </li>
+                        </check>
 
                     </ul>
                 </div> <!--1 column-->

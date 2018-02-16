@@ -1,11 +1,16 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: PCC
+ * This class is the normal member
+ * User: Bessy Torres-Miller
  * Date: 2/12/2018
  * Time: 5:05 PM
  */
 
+/**
+ * Class Member will create a normal member for the dating site with general information
+ *@author Bessy Torres-Miller
+ *
+ */
 class Member
 {
     //variables
@@ -19,9 +24,18 @@ class Member
     protected $seeking;
     protected $bio;
 
-
-
-    //constructor
+    /**
+     * Member constructor of the class
+     * @param $fname first Name
+     * @param $lname last name
+     * @param $age age
+     * @param $gender gender
+     * @param $phone phone number
+     * @param $email email
+     * @param $state state
+     * @param $seeking seeking
+     * @param $bio biography
+     */
     function __construct($fname, $lname, $age, $gender, $phone, $email, $state, $seeking, $bio)
     {
         $this->fname = $fname;
@@ -36,13 +50,9 @@ class Member
 
     }
 
-//    function Member($fname,$lname, $age, $gender, $phone)
-//    {
-//
-//    }
-
     /**
-     * @param $fname
+     * This is the setter for First Name
+     * @param first name
      */
     public function setFname($fname)
     {
@@ -50,6 +60,7 @@ class Member
     }
 
     /**
+     * Getter for first name
      * @return first Name
      */
     public function getFname()
@@ -58,7 +69,8 @@ class Member
     }
 
     /**
-     * @param mixed $lname
+     * Setter for last name
+     * @param last name
      */
     public function setLname($lname)
     {
@@ -66,6 +78,7 @@ class Member
     }
 
     /**
+     * Getter for last name
      * @return last name
      */
     public function getLname()
@@ -74,7 +87,8 @@ class Member
     }
 
     /**
-     * @param $age
+     * Setter for age
+     * @param age
      */
     public function setAge($age)
     {
@@ -82,6 +96,7 @@ class Member
     }
 
     /**
+     * Getter for age
      * @return age
      */
     public function getAge()
@@ -90,7 +105,8 @@ class Member
     }
 
     /**
-     * @param $gender
+     * Setter for gender
+     * @param gender
      */
     public function setGender($gender)
     {
@@ -98,6 +114,7 @@ class Member
     }
 
     /**
+     * Getter for gender
      * @return gender
      */
     public function getGender()
@@ -106,7 +123,8 @@ class Member
     }
 
     /**
-     * @param $phone
+     * Setter for phone number
+     * @param phone number
      */
     public function setPhone($phone)
     {
@@ -114,6 +132,7 @@ class Member
     }
 
     /**
+     * Getter for phone number
      * @return phone number
      */
     public function getPhone()
@@ -122,7 +141,8 @@ class Member
     }
 
     /**
-     * @param $email
+     * Setter for email
+     * @param email
      */
     public function setEmail($email)
     {
@@ -130,6 +150,7 @@ class Member
     }
 
     /**
+     * Getter for email
      * @return email
      */
     public function getEmail()
@@ -138,7 +159,8 @@ class Member
     }
 
     /**
-     * @param $state
+     * Setter for state
+     * @param state
      */
     public function setState($state)
     {
@@ -146,6 +168,7 @@ class Member
     }
 
     /**
+     * Getter for state
      * @return state
      */
     public function getState()
@@ -154,7 +177,8 @@ class Member
     }
 
     /**
-     * @param $seeking
+     * Setter for Seeking
+     * @param seeking
      */
     public function setSeeking($seeking)
     {
@@ -162,6 +186,7 @@ class Member
     }
 
     /**
+     * Getter for seeking
      * @return seeking
      */
     public function getSeeking()
@@ -170,6 +195,7 @@ class Member
     }
 
     /**
+     * Getter for Biography
      * @return biography
      */
     public function getBio()
@@ -178,45 +204,12 @@ class Member
     }
 
     /**
+     * Setter for biography
      * @param $bio
      */
     public function setBio($bio)
     {
         $this->bio = $bio;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

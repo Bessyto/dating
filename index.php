@@ -122,12 +122,16 @@ $f3->route('GET|POST /profile', function($f3) {
         //If success (no errors)
         if($success)
         {
-            //pass to variable the object
+            //retrieve the object from the session
             $member = $_SESSION['member'];
+
+            //Assign the new info to the object
             $member->setEmail($email);
             $member->setState($state);
             $member->setSeeking($seeking);
             $member->setBio($biography);
+
+            $_SESSION['member'] = $member;
 
             //send to the next page
             $f3->reroute(' ./interests');

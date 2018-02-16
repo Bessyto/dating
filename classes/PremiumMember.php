@@ -11,6 +11,15 @@ class PremiumMember extends Member
     private $_inDoorInterests = array();
     private $_outDoorInterests = array();
 
+    function __construct($fname, $lname, $age, $gender, $phone, $email, $state, $seeking, $bio,
+                         $inDoorInterests, $outDoorInterests)
+    {
+        parent::__construct($fname, $lname, $age, $gender, $phone, $email, $state, $seeking, $bio);
+
+        $this->_inDoorInterests = $inDoorInterests;
+        $this->_outDoorInterests = $outDoorInterests;
+
+    }
 
 
     /**

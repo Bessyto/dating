@@ -36,10 +36,10 @@ class Member
 
     }
 
-    function Member($fname,$lname, $age, $gender, $phone)
-    {
-
-    }
+//    function Member($fname,$lname, $age, $gender, $phone)
+//    {
+//
+//    }
 
     /**
      * @param $fname

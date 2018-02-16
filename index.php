@@ -38,10 +38,6 @@ $f3->route('GET|POST /personalInfo', function($f3) {
     //if the user submit the form
     if(isset($_POST['submit']))
     {
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
-
         //create variables to save the info from the post and use them in the functions
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
@@ -49,7 +45,6 @@ $f3->route('GET|POST /personalInfo', function($f3) {
         $phone = $_POST['phone'];
         $genre = $_POST['genre'];
         $premium = $_POST['premium'];
-        //$isMember = false;
 
         //call the function
         include('model/personalInfoFunctions.php');
@@ -78,22 +73,12 @@ $f3->route('GET|POST /personalInfo', function($f3) {
                     null, null, null, null);
             }
 
-            echo "Member Object <br><pre>";
-            var_dump($member);
-            echo "</pre>";
-
             //saves the object in the session(with all the variables values)
             $_SESSION['member'] = $member;
-
-            echo "SESSION of personal info <br><pre>";
-            var_dump($_SESSION);
-            echo "</pre>";
 
             //send to the next page
             $f3->reroute(' ./profile');
         }
-
-        //}
     }
     $view = new Template();
     echo $view -> render('pages/personalInfo.html');
@@ -102,10 +87,6 @@ $f3->route('GET|POST /personalInfo', function($f3) {
 
 //Define route for profile page----------------------------------------------------------------------------------------
 $f3->route('GET|POST /profile', function($f3) {
-
-    echo "SESSION array from previous page Interest <br><pre>";
-    var_dump($_SESSION['member']);
-    echo "</pre>";
 
     //Define the arrays posted in the current page
     $f3->set('seekings', array('Male', 'Female'));
@@ -141,17 +122,12 @@ $f3->route('GET|POST /profile', function($f3) {
         //If success (no errors)
         if($success)
         {
-            //pass to variable the object????????????????????????
+            //pass to variable the object
             $member = $_SESSION['member'];
-
             $member->setEmail($email);
             $member->setState($state);
             $member->setSeeking($seeking);
             $member->setBio($biography);
-
-            echo "SESSION array in Profile <br><pre>";
-            var_dump($_SESSION['member']);
-            echo "</pre>";
 
             //send to the next page
             $f3->reroute(' ./interests');
@@ -165,16 +141,11 @@ $f3->route('GET|POST /profile', function($f3) {
 //Define the route for interests page----------------------------------------------------------------------------------
 $f3->route('GET|POST /interests', function($f3) {
 
-    if(isset($_SESSION['member'])) {
-        if (!is_a($_SESSION['member'], "PremiumMember")) {
-            $f3->reroute("./summary");
+        if(isset($_SESSION['member'])) {
+            if (!is_a($_SESSION['member'], "PremiumMember")) {
+                $f3->reroute("./summary");
+            }
         }
-    }
-
-        echo "SESSION array from previous page <br><pre>";
-        var_dump($_SESSION['member']);
-        echo "</pre>";
-
         //Define arrays used in the page
         $f3->set('indoors', array('tv' => ' tv', 'puzzles' => ' puzzles', 'movies' => ' movies', 'reading' => ' reading',
             'cooking' => ' cooking', 'playing cards' => ' playing cards', 'board games' => ' board games',
@@ -207,10 +178,6 @@ $f3->route('GET|POST /interests', function($f3) {
 
                 $_SESSION['member'] = $member;
 
-                echo "SESSION array from previous page <br><pre>";
-                var_dump($_SESSION['member']);
-                echo "</pre>";
-
                 $f3->reroute("./summary");
             }
         }
@@ -222,15 +189,8 @@ $f3->route('GET|POST /interests', function($f3) {
 //Define route for the summary page------------------------------------------------------------------------------------
 $f3->route('GET|POST /summary', function($f3) {
 
-    echo "SESSION array from previous page <br><pre>";
-    var_dump($_SESSION['member']);
-    echo "</pre>";
-
     $member = $_SESSION['member'];
 
-    echo "Member <br><pre>";
-    var_dump($member);
-    echo "</pre>";
         //getting the values from Session and put them in Fat Free variable
         $f3->set('firstName', $member->getFname());
         $f3->set('lastName', $member->getLname());
@@ -254,15 +214,11 @@ $f3->route('GET|POST /summary', function($f3) {
             $f3->set('outdoor', "");
         }
 
-    echo "Member? <br><pre>";
-    var_dump($member);
-    echo "</pre>";
-
-    $f3->set('member', $_SESSION['member']);
+        $f3->set('member', $_SESSION['member']);
 
 
-        $view = new Template;
-        echo $view->render('pages/summary.html');
+    $view = new Template;
+    echo $view->render('pages/summary.html');
 
     session_destroy();
 }

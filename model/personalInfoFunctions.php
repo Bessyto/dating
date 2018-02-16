@@ -10,6 +10,7 @@
 
 $errors = array();
 
+
 //Check if the age is numerical and grater or equal to 18
 function validAge($age)
 {
@@ -51,7 +52,9 @@ function validGender($genre)
     return in_array($genre, $f3->get('genres'));
 }
 
+
 //Invoke functions passing the variables to check
+
 if (!validString($firstName))
 {
     $errors['firstName'] = "Please enter a valid first name";

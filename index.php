@@ -15,11 +15,15 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+require_once('model/dbMemberFunct.php');
 
 session_start();
 
 //Create an instance of the Base class
 $f3 = Base::instance();
+
+$dbh = connect();
+//define(dbh, connect());
 
 //Define a default route-----------------------------------------------------------------------------------------------
 $f3->route('GET /', function($f3)
@@ -29,6 +33,12 @@ $f3->route('GET /', function($f3)
 }
 );
 
+$f3->route('GET /admin', function($f3)
+{
+    $view = new View;
+    echo $view->render('pages/admin.html');
+}
+);
 //Define route for the personal information page------------------------------------------------------------------------
 $f3->route('GET|POST /personalInfo', function($f3) {
 
@@ -147,6 +157,20 @@ $f3->route('GET|POST /interests', function($f3) {
 
         if(isset($_SESSION['member'])) {
             if (!is_a($_SESSION['member'], "PremiumMember")) {
+
+                //add normal member to db
+                $member = $_SESSION['member'];
+
+                $memberAdded = addMember($member);
+
+
+                If($memberAdded){
+                    echo "member added succesfully";
+                }
+
+
+
+
                 $f3->reroute("./summary");
             }
         }
@@ -180,7 +204,17 @@ $f3->route('GET|POST /interests', function($f3) {
                 $member->setIndoorInterests($f3->get('indoor'));
                 $member->setOutdoorInterests($f3->get('outdoor'));
 
+
                 $_SESSION['member'] = $member;
+
+                //Add member to the db
+                $premiumAdded = addMember($member);
+//
+                If($premiumAdded){
+                    echo "member premium added succesfully";
+                }
+
+
 
                 $f3->reroute("./summary");
             }

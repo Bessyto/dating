@@ -10,6 +10,7 @@
 
     <!--Link to local css style-->
     <link rel= "stylesheet" href="styles/styles.css">
+    <link rel= "stylesheet" href="styles/admin.css">
 
 </head>
 
@@ -27,40 +28,38 @@
 </header>
 
 <body>
-<table class="table">
-    <h3 class="text-center"> My Dating Website Members</h3>
-    <thead>
+<table class="table table-hover table-sm" id="table"><br>
+    <h3 class="text-center text-danger">Membership</h3>
+    <thead class="table-danger">
         <tr>
             <th>ID</th> <th>Name</th> <th>Age</th> <th>Phone</th> <th>Email</th> <th>State</th>
             <th>Gender</th> <th>Seeking</th> <th>Premium</th> <th>Interests</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
 
-        </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
+        <repeat group = "{{@members}}" value="{{@member}}">
+                <td>{{@member['member_id']}}</td>
+                <td>{{@member['lname']}}, {{@member['fname']}}</td>
+                <td>{{@member['age']}}</td>
+                <td>{{@member['phone']}}</td>
+                <td>{{@member['email']}}</td>
+                <td>{{@member['state']}}</td>
+                <td>{{@member['gender']}}</td>
+                <td>{{@member['seeking']}}</td>
+
+                <check if="{{@member['premium'] == 1}}">
+                    <true>
+                        <td><input type="checkbox" name="premium" value="" checked="checked" disabled="disabled"></td>
+                    </true>
+                    <false>
+                        <td><input type="checkbox" name="noPremium" value="" disabled="disabled"></td>
+                    </false>
+                </check>
+                <td>{{@member['interests']}}</td>
+            </tr>
+        </repeat>
+
     </tbody>
 </table>
 

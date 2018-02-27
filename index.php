@@ -33,10 +33,15 @@ $f3->route('GET /', function($f3)
 }
 );
 
+
+//--------------------------------------------------------------------------------------------------------
 $f3->route('GET /admin', function($f3)
 {
-    $view = new View;
-    echo $view->render('pages/admin.html');
+    $members = getMembers();
+    $f3->set('members', $members);
+
+    $template = new Template;
+    echo $template->render('pages/admin.html');
 }
 );
 //Define route for the personal information page------------------------------------------------------------------------
@@ -161,15 +166,7 @@ $f3->route('GET|POST /interests', function($f3) {
                 //add normal member to db
                 $member = $_SESSION['member'];
 
-                $memberAdded = addMember($member);
-
-
-                If($memberAdded){
-                    echo "member added succesfully";
-                }
-
-
-
+                addMember($member);
 
                 $f3->reroute("./summary");
             }
@@ -208,13 +205,7 @@ $f3->route('GET|POST /interests', function($f3) {
                 $_SESSION['member'] = $member;
 
                 //Add member to the db
-                $premiumAdded = addMember($member);
-//
-                If($premiumAdded){
-                    echo "member premium added succesfully";
-                }
-
-
+                addMember($member);
 
                 $f3->reroute("./summary");
             }

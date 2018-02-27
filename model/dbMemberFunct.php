@@ -34,15 +34,15 @@ function connect()
         $outDoorInterests = $member->getOutDoorInterests();
         $premium = 1;
 
-        $interests .= "Indoor Interests: [";
+        $interests .= "";
         for($i = 0; $i < count($inDoorInterests); $i++) {
-            $interests .= $inDoorInterests[$i];
+            $interests .= $inDoorInterests[$i] . ", ";
         }
-        $interests .= "] Outdoor Interests: [";
+        //$interests .= "";
         for($i = 0; $i < count($outDoorInterests); $i++) {
-            $interests .= $outDoorInterests[$i];
+            $interests .= $outDoorInterests[$i] . ", ";
         }
-        $interests .= "]";
+        //$interests .= "]";
     }
     else{
         $premium = 0;
@@ -81,5 +81,23 @@ function connect()
 
 function getMembers()
 {
+    //gives access to the variable in index
+    global  $dbh;
+
+    //1. Define the query
+    $sql = "SELECT * FROM Members ORDER BY lname";
+
+    //2. Prepare the statement
+    $statement = $dbh->prepare($sql);
+
+    //3. Bind parameters
+
+    //4.Execute statement
+    $statement->execute();
+
+    //5. Return the results
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
 
 }

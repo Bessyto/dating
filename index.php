@@ -252,5 +252,19 @@ $f3->route('GET|POST /summary', function($f3) {
 }
 );
 
+//Route to view summary
+$f3->route('GET /memberInfo/@member_id', function($f3, $params)
+{
+    $member_id= $params['member_id'];
+
+    $member=$GLOBALS['dbh']->getMember($member_id);
+    $f3->set('member', $member);
+
+    //Load template
+    $template = new Template();
+    echo $template -> render('pages/memberInfo.html');
+}
+);
+
 //Run fat free
 $f3->run();

@@ -1,0 +1,20 @@
+/*
+    styles.css
+    Bessy Torres-Miller
+    Styles applied to home.html page
+ */
+
+/* Style in body  */
+body{
+    margin-top: 30px;
+}
+h3{
+    text-decoration: mediumvioletred;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#info{
+    margin-left: 30px;
+    margin-top: 20px;
+
+}

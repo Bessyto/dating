@@ -76,8 +76,9 @@ class DataObject
             for ($i = 0; $i < count($outDoorInterests); $i++) {
                 $interests .= $outDoorInterests[$i] . ", ";
             }
-            //$interests = rtrim($interests,", ");
-            //$interests = substr($interests,0, count($interests)-2);
+
+            $interests = rtrim($interests,", ");
+
         } else {
             $premium = 0;
         }
@@ -127,6 +128,36 @@ class DataObject
 
         //5. Return the results
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+
+    /**
+     * Function to retrieve a specific member from the data base
+     * @param $member_id pass the member id
+     * @return mixed return the row info
+     */
+    function getMember($member_id)
+    {
+        //gives access to the variable in index
+        //global  $dbh;
+
+        //1. Define the query
+        $sql = "SELECT * FROM Members WHERE member_id =:member_id";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind parameters
+        $statement->bindParam(':member_id', $member_id, PDO::PARAM_STR);
+
+        //4.Execute statement
+        $statement->execute();
+
+        //5. Return the results
+        $result = $statement->fetch();
+        //print_r($result);
 
         return $result;
     }

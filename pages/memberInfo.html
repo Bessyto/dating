@@ -1,0 +1,50 @@
+<!--
+    Bessy Torres-Miller
+    IT-328
+    memberInfo.html
+    This page shows the information of a specific member from data base
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Info</title>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel= "stylesheet" href="../styles/memberInfo.css">
+
+
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-light bg-faded bg-info text-white">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <a class="navbar-brand text-white" href="../">My Dating Website</a>
+            </div>
+            <ul class="navbar-brand">
+                <a class="navbar-brand text-white" href="../admin">Admin</a>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div id="info">
+    <h3 class="text-danger">Member Information</h3>
+    <p> <span class="text-info">Member Name: </span>{{@member['fname']}} {{@member['lname'] }}</p>
+    <p> <span class="text-info">Age: </span>{{@member['age'] }} </p>
+    <p> <span class="text-info">Gender: </span>{{@member['gender'] }} </p>
+    <p> <span class="text-info">Phone: </span>{{@member['phone'] }} </p>
+    <p> <span class="text-info">Email: </span>{{@member['email'] }} </p>
+    <p> <span class="text-info">State: </span>{{@member['state'] }} </p>
+    <p> <span class="text-info">Seeking: </span>{{@member['seeking'] }} </p>
+    <p> <span class="text-info">Biography: </span>{{@member['bio'] }} </p>
+    <check if="{{@member['interests'] == ''}}">
+        <false><p> <span class="text-info">Interests: </span>{{@member['interests'] }} </p></false>
+    </check>
+
+</div>
+</body>
+</html>

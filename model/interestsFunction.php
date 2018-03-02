@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ *
  * User: Bessy Torres-Miller
  * Date: 2/1/2018
  * Time: 11:53 PM
@@ -8,13 +8,16 @@
  */
 
 $errors = array();
-
+/**
+ * Function to validate indoor activities
+ * @param $indoor the activitie parameter
+ * @return bool returns true if the parameter is in the activities array
+ */
 function validIndoor($indoor)
 {
     global $f3;
 
-    if(isset($indoor))
-    {
+    if(isset($indoor)){
         foreach ($indoor as $indoorInt)
         {
             if(!in_array($indoorInt, $f3->get('indoors')))
@@ -28,23 +31,23 @@ function validIndoor($indoor)
     return false;
 }
 
+/**
+ * Function to validate outdoor activities
+ * @param $outdoor activity aparameter
+ * @return bool returns true if the parameter is in the activities array
+ */
 function validOutdoor($outdoor)
 {
     global $f3;
 
-    if(isset($outdoor))
-    {
-        foreach ($outdoor as $outdoorInt)
-        {
-            if(!in_array($outdoorInt, $f3->get('outdoors')))
-            {
+    if(isset($outdoor)){
+        foreach ($outdoor as $outdoorInt){
+            if(!in_array($outdoorInt, $f3->get('outdoors'))){
                 return false;
             }
-
         }
         return true;
     }
-
     return false;
 }
 

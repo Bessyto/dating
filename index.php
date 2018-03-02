@@ -15,29 +15,27 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
-require_once('model/dbMemberFunct.php');
 
 session_start();
 
 //Create an instance of the Base class
 $f3 = Base::instance();
 
-$dbh = connect();
-//define(dbh, connect());
+//Instatntiate the object for the connection to db
+$dbh = new DataObject();
 
 //Define a default route-----------------------------------------------------------------------------------------------
 $f3->route('GET /', function($f3)
 {
-    $view = new View;
-    echo $view->render('pages/home.html');
+    $template = new Template;
+    echo $template->render('pages/home.html');
 }
 );
 
-
-//--------------------------------------------------------------------------------------------------------
+//Define route for admin page-------------------------------------------------------------------------
 $f3->route('GET /admin', function($f3)
 {
-    $members = getMembers();
+    $members = $GLOBALS['dbh']->getMembers();
     $f3->set('members', $members);
 
     $template = new Template;
@@ -160,13 +158,15 @@ $f3->route('GET|POST /profile', function($f3) {
 //Define the route for interests page----------------------------------------------------------------------------------
 $f3->route('GET|POST /interests', function($f3) {
 
+        //if the member is not premium, add it to the db by passing the member object and
+        //redirect the user to the summary page
         if(isset($_SESSION['member'])) {
             if (!is_a($_SESSION['member'], "PremiumMember")) {
 
                 //add normal member to db
                 $member = $_SESSION['member'];
 
-                addMember($member);
+                $GLOBALS['dbh']->addMember($member);
 
                 $f3->reroute("./summary");
             }
@@ -201,11 +201,10 @@ $f3->route('GET|POST /interests', function($f3) {
                 $member->setIndoorInterests($f3->get('indoor'));
                 $member->setOutdoorInterests($f3->get('outdoor'));
 
-
                 $_SESSION['member'] = $member;
 
-                //Add member to the db
-                addMember($member);
+                //Add member to the db by passing the member object
+                $GLOBALS['dbh']->addMember($member);
 
                 $f3->reroute("./summary");
             }

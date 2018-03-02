@@ -74,7 +74,15 @@ class Member
      */
     public function setLname($lname)
     {
-        $this->lname = $lname;
+        if(!empty($lname) && preg_match("/^[a-zA-Z'-]+$/",$lname))
+        {
+            $this->lname = $lname;
+        }
+        else
+        {
+            $this->lname = "";
+        }
+
     }
 
     /**
@@ -92,7 +100,15 @@ class Member
      */
     public function setAge($age)
     {
-        $this->age = $age;
+        if(!is_numeric($age) || $age<=0)
+        {
+            $this->age = " ";
+        }
+        else
+        {
+            $this->age = $age;
+        }
+
     }
 
     /**
@@ -146,7 +162,15 @@ class Member
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        if (filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            $this->email = $email;
+        }
+        else
+        {
+            $this->email = "";
+        }
+
     }
 
     /**
@@ -155,6 +179,7 @@ class Member
      */
     public function getEmail()
     {
+
         return $this->email;
     }
 

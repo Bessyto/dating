@@ -13,7 +13,7 @@
                       lname VARCHAR(30) NOT NULL,
                       age TINYINT(2) NOT NULL,
                       gender CHAR(6) NOT NULL,
-                      phone CHAR(12) NOT NULL,
+                      phone CHAR(13) NOT NULL,
                       email VARCHAR(30) NOT NULL,
                       state VARCHAR(30) NOT NULL,
                       seeking CHAR(6) NOT NULL,
@@ -62,6 +62,9 @@ class DataObject
         $image = '';
         $interests = "";
 
+        $phone = str_replace('-', '', $member->getPhone());
+        $phone = '('.substr($phone, 0, 3).')'.substr($phone, 3, 3).'-'.substr($phone,6);
+
         //if the object is a member will loop over the array and set the interests
         if ($member instanceof PremiumMember) {
             $inDoorInterests = $member->getInDoorInterests();
@@ -95,7 +98,7 @@ class DataObject
         $statement->bindParam(':lname', $member->getLname(), PDO::PARAM_STR);
         $statement->bindParam(':age', $member->getAge(), PDO::PARAM_STR);
         $statement->bindParam(':gender', $member->getGender(), PDO::PARAM_STR);
-        $statement->bindParam(':phone', $member->getPhone(), PDO::PARAM_STR);
+        $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
         $statement->bindParam(':email', $member->getEmail(), PDO::PARAM_STR);
         $statement->bindParam(':state', $member->getState(), PDO::PARAM_STR);
         $statement->bindParam(':seeking', $member->getSeeking(), PDO::PARAM_STR);
